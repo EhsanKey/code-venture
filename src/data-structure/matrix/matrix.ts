@@ -34,7 +34,7 @@ class BaseMatrix {
 }
 
 export default class Matrix extends BaseMatrix implements IMatrix {
-  constructor(rows, columns) {
+  constructor(rows: number, columns: number) {
     super(rows, columns);
   }
 
