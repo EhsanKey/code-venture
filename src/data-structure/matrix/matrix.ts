@@ -1,11 +1,11 @@
-interface IMatrix {
-  rows: number;
-  columns: number;
-  matrix: number[][];
-  printMatrix(): void;
-  updateMatrix(row: number, column: number, value: number): void;
-  getMatrix(): number[][];
-}
+import {
+  CheckValidColumn,
+  CheckValidRow,
+  GetMatrix,
+  IMatrix,
+  PrintMatrix,
+  UpdateMatrix,
+} from "./_type";
 
 class BaseMatrix {
   rows: number;
@@ -20,39 +20,39 @@ class BaseMatrix {
     );
   }
 
-  protected checkValidRow(row: number): void {
+  protected checkValidRow: CheckValidRow = (row) => {
     if (row < 0 || row >= this.rows) {
       throw new Error("Invalid row");
     }
-  }
+  };
 
-  protected checkValidColumn(column: number): void {
+  protected checkValidColumn: CheckValidColumn = (column) => {
     if (column < 0 || column >= this.columns) {
       throw new Error("Invalid column");
     }
-  }
+  };
 }
 
 export default class Matrix extends BaseMatrix implements IMatrix {
-  constructor(rows: number, columns: number) {
+  constructor(rows, columns) {
     super(rows, columns);
   }
 
-  printMatrix(): void {
+  printMatrix: PrintMatrix = () => {
     console.log("\n---- start ----");
     for (let i = 0; i < this.matrix.length; i++) {
       console.log(this.matrix[i]);
     }
     console.log("---- end ----");
-  }
+  };
 
-  updateMatrix(row: number, column: number, value: number): void {
+  updateMatrix: UpdateMatrix = (row, column, value) => {
     this.checkValidRow(row);
     this.checkValidColumn(column);
     this.matrix[row][column] = value;
-  }
+  };
 
-  getMatrix(): number[][] {
+  getMatrix: GetMatrix = () => {
     return this.matrix;
-  }
+  };
 }
