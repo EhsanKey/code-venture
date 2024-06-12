@@ -1,6 +1,6 @@
 import {
-  CheckValidColumn,
-  CheckValidRow,
+  CheckValidColumnMatrix,
+  CheckValidRowMatrix,
   GetMatrix,
   IMatrix,
   PrintMatrix,
@@ -20,13 +20,13 @@ class BaseMatrix {
     );
   }
 
-  protected checkValidRow: CheckValidRow = (row) => {
+  protected checkValidRow: CheckValidRowMatrix = (row) => {
     if (row < 0 || row >= this.rows) {
       throw new Error("Invalid row");
     }
   };
 
-  protected checkValidColumn: CheckValidColumn = (column) => {
+  protected checkValidColumn: CheckValidColumnMatrix = (column) => {
     if (column < 0 || column >= this.columns) {
       throw new Error("Invalid column");
     }
