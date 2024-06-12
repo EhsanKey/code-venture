@@ -1,13 +1,13 @@
 import {
-  CheckEmpty,
-  Clear,
-  IsEmpty,
+  CheckEmptyStack,
+  PushStack,
+  ClearStack,
   IStack,
-  Peek,
-  Pop,
-  Print,
-  Push,
-  Size,
+  IsEmptyStack,
+  PeekStack,
+  PopStack,
+  PrintStack,
+  SizeStack,
 } from "./_type";
 
 class BaseStack {
@@ -20,7 +20,7 @@ class BaseStack {
     }
   }
 
-  protected checkEmpty: CheckEmpty = () => {
+  protected checkEmpty: CheckEmptyStack = () => {
     if (this.top === -1) {
       throw new Error("Stack is empty");
     }
@@ -32,33 +32,33 @@ export default class Stack extends BaseStack implements IStack {
     super(value);
   }
 
-  push: Push = (value: string) => {
+  push: PushStack = (value: string) => {
     this.stack[++this.top] = value;
   };
 
-  pop: Pop = () => {
+  pop: PopStack = () => {
     this.checkEmpty();
     return this.stack[this.top--];
   };
 
-  peek: Peek = () => {
+  peek: PeekStack = () => {
     this.checkEmpty();
     return this.stack[this.top];
   };
 
-  isEmpty: IsEmpty = () => {
+  isEmpty: IsEmptyStack = () => {
     return this.top === -1;
   };
 
-  clear: Clear = () => {
+  clear: ClearStack = () => {
     this.top = -1;
   };
 
-  size: Size = () => {
+  size: SizeStack = () => {
     return this.top + 1;
   };
 
-  print: Print = () => {
+  print: PrintStack = () => {
     for (let i = this.top; i >= 0; i--) {
       console.log(this.stack[i]);
     }
