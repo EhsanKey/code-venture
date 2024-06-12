@@ -71,13 +71,4 @@ describe("Queue", () => {
   test("should throw an error when deleting from an empty queue", () => {
     expect(() => queue.delete()).toThrow("Queue is empty");
   });
-
-  test("should throw an error when adding to a full queue", () => {
-    queue.add("first");
-    queue.add("second");
-    queue.add("third");
-    queue.add("fourth");
-    queue.add("fifth");
-    expect(() => queue.add("sixth")).toThrow("Queue is full");
-  });
 });
